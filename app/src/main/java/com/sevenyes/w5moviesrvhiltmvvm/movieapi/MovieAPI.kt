@@ -10,10 +10,10 @@ import retrofit2.http.Path
 interface MovieAPI {
 
     @GET(TOP250_PATH)
-    suspend fun getMovies(@Path("MYKEY") myKey : String = MYKEY): Response<Movie250Response>
+    suspend fun getMovies250(@Path("MYKEY") myKey : String = MYKEY): Response<Movie250Response>
 
    @GET(POPULAR_PATH)
-   suspend fun getMovies2(@Path("MYKEY") path: String = MYKEY) : Response<Movie250Response>
+   suspend fun getMoviesPopular(@Path("MYKEY") path: String = MYKEY) : Response<Movie250Response>
 
     companion object{
         const val BASE_PATH = "https://imdb-api.com/en/API/"
