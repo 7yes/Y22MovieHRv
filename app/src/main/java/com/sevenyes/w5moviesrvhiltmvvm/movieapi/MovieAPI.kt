@@ -1,10 +1,8 @@
 package com.sevenyes.w5moviesrvhiltmvvm.movieapi
 
-import com.sevenyes.w5moviesrvhiltmvvm.models.Movie250
 import com.sevenyes.w5moviesrvhiltmvvm.models.Movie250Response
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface MovieAPI {
