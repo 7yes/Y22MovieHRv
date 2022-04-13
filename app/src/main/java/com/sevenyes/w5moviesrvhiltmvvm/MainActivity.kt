@@ -21,13 +21,23 @@ class MainActivity : AppCompatActivity() {
         MovieAdapter() { movie, position ->
          movie.iLikeIt=! movie.iLikeIt
             this.adapterMovie250.notifyItemChanged(position)
+            this.adapterFavorite.filterFavorites(movie)
         }
     }
     private val adapterPopular by lazy {
         MovieAdapter() { movie, position ->
             movie.iLikeIt=! movie.iLikeIt
             this.adapterMovie250.notifyItemChanged(position)
+            this.adapterFavorite.filterFavorites(movie)
         }
+    }
+
+    private val adapterFavorite: MovieAdapter by lazy {
+     MovieAdapter(){ movie, position ->
+         movie.iLikeIt=! movie.iLikeIt
+         this.adapterFavorite.removeMovie(position)
+         this.adapterFavorite.notifyItemChanged(position)
+     }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +68,10 @@ class MainActivity : AppCompatActivity() {
         }
         binding.rvPopular.apply {
             adapter = adapterPopular
+            layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+        }
+        binding.rvFavorites.apply {
+            adapter = adapterFavorite
             layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
         }
 

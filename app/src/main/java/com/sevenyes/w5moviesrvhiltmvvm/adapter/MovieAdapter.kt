@@ -11,11 +11,21 @@ import com.sevenyes.w5moviesrvhiltmvvm.R
 import com.sevenyes.w5moviesrvhiltmvvm.models.Movie250
 import com.squareup.picasso.Picasso
 
-class MovieAdapter(private var movieList: List<Movie250> = listOf(), private val like: (movie: Movie250, position: Int) -> Unit)
+class MovieAdapter(private var movieList: MutableList<Movie250> = mutableListOf(), private val like: (movie: Movie250, position: Int) -> Unit)
     : RecyclerView.Adapter<MovieHolder>() {
 
+    fun removeMovie(position: Int){
+        movieList.removeAt(position)
+        notifyItemChanged(position)
+    }
+
+    fun filterFavorites(movie: Movie250){
+        movieList.add(movie)
+        notifyItemChanged(itemCount-1)
+    }
+
     fun setMovies(movieListNew: List<Movie250>){
-        movieList = movieListNew
+        movieList = movieListNew as MutableList<Movie250>
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {

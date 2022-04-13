@@ -23,5 +23,6 @@ data class Movie250(
     @SerializedName("year")
     val year: String,
     @SerializedName("rankUpDown")
-    val rankUpDown: String
+    val rankUpDown: String,
+    var iLikeIt: Boolean = false
 )
