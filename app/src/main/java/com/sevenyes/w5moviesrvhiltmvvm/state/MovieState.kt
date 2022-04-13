@@ -6,6 +6,6 @@ import java.lang.Exception
 
 sealed class MovieState{
     object LOADING : MovieState()
-    class SUCCESS(val response: Movie250Response) : MovieState()
+    class SUCCESS(val response250: Movie250Response, val responsePopular: Movie250Response) : MovieState()
     class ERROR(val e: Throwable) : MovieState()
 }

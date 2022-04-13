@@ -8,7 +8,6 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-
 interface IMovieRepository {
     suspend fun getMovies250(): Response<Movie250Response>
     suspend fun getMoviesPopular(): Response<Movie250Response>
